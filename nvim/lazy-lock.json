@@ -1,0 +1,9 @@
+{
+  "andromeda": { "branch": "master", "commit": "09611657222fe07670acff984beb1bd793ee89fb" },
+  "colorbuddy.nvim": { "branch": "dev", "commit": "e498b2b49d9ad0c3fb8168a02b237b689dcd4051" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "nerdtree": { "branch": "master", "commit": "9b465acb2745beb988eff3c1e4aa75f349738230" },
+  "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
+  "vim-easymotion": { "branch": "master", "commit": "b3cfab2a6302b3b39f53d9fd2cd997e1127d7878" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "c45243dc1f32ac6bcf6068e5300f3b2b237e576a" }
+}
