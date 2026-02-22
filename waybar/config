@@ -1,4 +1,4 @@
-// -*- mode: jsonc -*-
+    // -*- mode: jsonc -*-
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -10,18 +10,16 @@
 		"image",
         "hyprland/workspaces",
 		"cpu",
-		"memory",
-		"disk"
+		"memory"
     ],
     "modules-center": [
-        "user"
+        "clock"
     ],
     "modules-right": [
         "tray",
         "power-profiles-daemon",
         "pulseaudio",
         "network",
-        "clock",
         "custom/power"
     ], 
     "hyprland/window": {
@@ -35,31 +33,26 @@
       		"active": "",
       		"default": ""
 		},
-		"sort-by-number": true,
-		"persistent-workspaces": {
-			"1": [],
-			"2": [],
-			"3": [],
-			"4": []
-		}
+        "sort-by-number": true
     },
 	"user": {
-    	"format": "{user} | ({work_H}hr {work_M} mins ↑)",
+    	"format": "{work_H}hr {work_M} mins ↑",
     	"interval": 60,
-    	"height": 23,
-    	"width": 23,
-  	},
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
+            "height": 23,
+            "width": 23
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+            // "icons": {
+            //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%A %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
