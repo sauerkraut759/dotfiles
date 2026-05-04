@@ -66,6 +66,8 @@ export VISUAL=nvim
 alias spico='sudo pico'
 alias snano='sudo nano'
 alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -109,12 +111,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Edit this .bashrc file
 alias ebrc='edit ~/.bashrc'
 
-# Show help for this .bashrc file
-alias hlp='less ~/.bashrc_help'
-
-# alias to show the date
-alias da='date "+%Y-%m-%d %A %T %Z"'
-
 # Alias's to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
@@ -124,10 +120,7 @@ alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
-alias freshclam='sudo freshclam'
-alias vi='nvim'
 alias svi='sudo vi'
 alias vis='nvim "+set si"'
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
@@ -147,8 +140,8 @@ alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
-alias la='ls -Alh'                # show hidden files
 alias ls='eza -ahF --color=auto --icons=auto' # add colors and file type extensions
+alias la='ls -Alh'                # show hidden files
 alias lx='ls -lXBh'               # sort by extension
 alias lk='ls -lSrh'               # sort by size
 alias lc='ls -ltcrh'              # sort by change time
@@ -498,69 +491,6 @@ function whatsmyip () {
     curl -4 ifconfig.me
 }
 
-# View Apache logs
-apachelog() {
-	if [ -f /etc/httpd/conf/httpd.conf ]; then
-		cd /var/log/httpd && ls -xAh && multitail --no-repeat -c -s 2 /var/log/httpd/*_log
-	else
-		cd /var/log/apache2 && ls -xAh && multitail --no-repeat -c -s 2 /var/log/apache2/*.log
-	fi
-}
-
-# Edit the Apache configuration
-apacheconfig() {
-	if [ -f /etc/httpd/conf/httpd.conf ]; then
-		sedit /etc/httpd/conf/httpd.conf
-	elif [ -f /etc/apache2/apache2.conf ]; then
-		sedit /etc/apache2/apache2.conf
-	else
-		echo "Error: Apache config file could not be found."
-		echo "Searching for possible locations:"
-		sudo updatedb && locate httpd.conf && locate apache2.conf
-	fi
-}
-
-# Edit the PHP configuration file
-phpconfig() {
-	if [ -f /etc/php.ini ]; then
-		sedit /etc/php.ini
-	elif [ -f /etc/php/php.ini ]; then
-		sedit /etc/php/php.ini
-	elif [ -f /etc/php5/php.ini ]; then
-		sedit /etc/php5/php.ini
-	elif [ -f /usr/bin/php5/bin/php.ini ]; then
-		sedit /usr/bin/php5/bin/php.ini
-	elif [ -f /etc/php5/apache2/php.ini ]; then
-		sedit /etc/php5/apache2/php.ini
-	else
-		echo "Error: php.ini file could not be found."
-		echo "Searching for possible locations:"
-		sudo updatedb && locate php.ini
-	fi
-}
-
-# Edit the MySQL configuration file
-mysqlconfig() {
-	if [ -f /etc/my.cnf ]; then
-		sedit /etc/my.cnf
-	elif [ -f /etc/mysql/my.cnf ]; then
-		sedit /etc/mysql/my.cnf
-	elif [ -f /usr/local/etc/my.cnf ]; then
-		sedit /usr/local/etc/my.cnf
-	elif [ -f /usr/bin/mysql/my.cnf ]; then
-		sedit /usr/bin/mysql/my.cnf
-	elif [ -f ~/my.cnf ]; then
-		sedit ~/my.cnf
-	elif [ -f ~/.my.cnf ]; then
-		sedit ~/.my.cnf
-	else
-		echo "Error: my.cnf file could not be found."
-		echo "Searching for possible locations:"
-		sudo updatedb && locate my.cnf
-	fi
-}
-
-
 # Trim leading and trailing spaces (for scripts)
 trim() {
 	local var=$*
@@ -568,43 +498,10 @@ trim() {
 	var="${var%"${var##*[![:space:]]}"}" # remove trailing whitespace characters
 	echo -n "$var"
 }
-# GitHub Titus Additions
-
-gcom() {
-	git add .
-	git commit -m "$1"
-}
-lazyg() {
-	git add .
-	git commit -m "$1"
-	git push
-}
-
-function hb {
-    if [ $# -eq 0 ]; then
-        echo "No file path specified."
-        return
-    elif [ ! -f "$1" ]; then
-        echo "File path does not exist."
-        return
-    fi
-
-    uri="http://bin.christitus.com/documents"
-    response=$(curl -s -X POST -d @"$1" "$uri")
-    if [ $? -eq 0 ]; then
-        hasteKey=$(echo $response | jq -r '.key')
-        echo "http://bin.christitus.com/$hasteKey"
-    else
-        echo "Failed to upload the document."
-    fi
-}
 
 #######################################################
 # Set the ultimate amazing command prompt
 #######################################################
-
-alias hug="systemctl --user restart hugo"
-alias lanm="systemctl --user restart lan-mouse"
 
 # Check if the shell is interactive
 if [[ $- == *i* ]]; then
