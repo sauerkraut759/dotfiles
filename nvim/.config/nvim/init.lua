@@ -68,20 +68,30 @@ require('lazy').setup({
 			}
 		end
 	},
-	--		melange
-	{
-		"savq/melange-nvim",
-		--priority = 1000,
-		--config = function()
-		--	  vim.cmd 'colorscheme melange'
-		--end
-	},
 	{ 
-		--"blazkowolf/gruber-darker.nvim",
-		dir = "/data/coding/nvim-plugins/gruber-darker.nvim",
+		"sauerkraut759/gruber-darker.nvim",
+		branch="add-transparent-background",
+		--dir = "/data/coding/nvim-plugins/gruber-darker.nvim",
+		opts = {
+			transparent_bg = true,
+		},
 		priority = 1000,
 		config = function()
-			vim.cmd 'colorscheme gruber-darker'
+			require("gruber-darker").setup({
+				transparent_bg = true,
+			})
+		end
+	},
+	{
+		'olivercederborg/poimandres.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require('poimandres').setup {
+				disable_background = true,
+				bold_vert_split = true
+			}
+			vim.cmd 'colorscheme poimandres'
 		end
 	},
 	-- [IDE]
