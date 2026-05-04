@@ -1,0 +1,74 @@
+font_family      Noto Nerd Font
+bold_font        auto
+italic_font      auto
+font_size        10.0
+
+# [CURSOR]
+# cursor           #88c0d0
+cursor_shape     block
+cursor_blink_interval 0
+
+mouse_hide_wait  3.0
+# url_color        #81a1c1
+url_style        curly
+
+# [SCROLL]
+scrollback_lines 10000
+scrollback_pager less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER
+
+# [TABS]
+tab_bar_edge     top
+tab_bar_style    powerline
+tab_powerline_style slanted
+tab_title_template {title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}
+
+# [MISC]
+bell_on_errors off
+
+# [KEYBINDS]
+map ctrl+shift+t new_tab
+map ctrl+shift+w close_tab
+map ctrl+shift+enter new_window
+map ctrl+shift+q close_window
+map ctrl+shift+plus increase_font_size
+map ctrl+shift+minus decrease_font_size
+map ctrl+shift+0 reset_font_size
+map ctrl+shift+f>scrollback_lines 1000
+
+# [THEME]
+# background #221D23
+# foreground #ECE1D7
+# cursor     none
+# url_color  #7F91B2
+# selection_background    #403A36
+# selection_foreground    #ECE1D7
+# tab_bar_background      #34302C
+# active_tab_background   #34302C
+# active_tab_foreground   #E49B5D
+# inactive_tab_background #34302C
+# inactive_tab_foreground #ECE1D7
+# color0  #34302C
+# color1  #BD8183
+# color2  #78997A
+# color3  #E49B5D
+# color4  #7F91B2
+# color5  #B380B0
+# color6  #7B9695
+# color7  #C1A78E
+# color8  #867462
+# color9  #D47766
+# color10 #85B695
+# color11 #EBC06D
+# color12 #A3A9CE
+# color13 #CF9BC2
+# color14 #89B3B6
+# color15 #ECE1D7
+
+
+# BEGIN_KITTY_THEME
+# Night Lion V2
+include current-theme.conf
+# END_KITTY_THEME
+
+background_opacity 0.8
+background_blur 1
