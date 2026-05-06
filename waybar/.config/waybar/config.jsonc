@@ -18,6 +18,7 @@
     "modules-right": [
         "tray",
         "power-profiles-daemon",
+	"battery",
         "pulseaudio",
         "network",
         "custom/power"
