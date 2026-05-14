@@ -6,19 +6,23 @@ local function get_hostname()
 	return name
 end
 
-local profile = {
+local desktop_profile = {
 	host_type = "desktop"
 	main_monitor = "DP-3",
 	secondary_monitor = "HDMI-A-1",
 }
 
+local laptop_profile = {
+	host_type = "laptop"
+	main_monitor = "eDP-1",
+	secondary_monitor = nil,
+}
+
 local hostname = get_hostname()
 
 if hostname == "nitro5" then
-	profile.host_type = "laptop"
-	profile.main_monitor = "eDP-1"
-	profile.secondary_monitor = nil
+	return laptop_profile
+else
+	return desktop_profile
 end
-
-return profile
 
