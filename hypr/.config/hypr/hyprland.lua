@@ -8,6 +8,8 @@ require("env")
 require("general")
 require("decoration")
 require("animations")
+require("layouts")
+require("misc")
 
 -----------------------
 ----- PERMISSIONS -----
