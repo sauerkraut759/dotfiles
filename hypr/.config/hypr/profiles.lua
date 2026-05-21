@@ -7,13 +7,13 @@ local function get_hostname()
 end
 
 local desktop_profile = {
-	host_type = "desktop"
+	host_type = "desktop",
 	main_monitor = "DP-3",
 	secondary_monitor = "HDMI-A-1",
 }
 
 local laptop_profile = {
-	host_type = "laptop"
+	host_type = "laptop",
 	main_monitor = "eDP-1",
 	secondary_monitor = nil,
 }
