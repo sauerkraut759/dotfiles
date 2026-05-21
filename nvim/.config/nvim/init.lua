@@ -97,6 +97,41 @@ require('lazy').setup({
 		opts = {},
 	},
 	{
+		'saghen/blink.cmp',
+		dependencies = {
+			'saghen/blink.lib',
+			'rafamadriz/friendly-snippets',
+		},
+		opts = {
+			keymap = {
+				preset = 'default',
+				['<CR>']    = { 'accept', 'fallback' },
+				['<Tab>']   = { 'select_next', 'snippet_forward', 'fallback' },
+				['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+				['<C-d>']   = { 'scroll_documentation_down', 'fallback' },
+				['<C-u>']   = { 'scroll_documentation_up', 'fallback' },
+				['<C-e>']   = { 'cancel', 'fallback' },
+			},
+		},
+		appearance = {
+			nerd_font_variant = 'mono',
+		},
+		sources = {
+			default = { 'lsp', 'path', 'snippets', 'buffer' },
+		},
+		completion = {
+			list = { selection = { preselect = true, auto_show_delay_ms = 200 } },
+			menu = {
+				draw = {
+					columns = {
+						{ 'label', 'label_description', gap = 1 },
+						{ 'kind_icon', 'kind' },
+					},
+				},
+			},
+		},
+	},
+	{
 		"rmagatti/auto-session",
 		lazy = false,
 
