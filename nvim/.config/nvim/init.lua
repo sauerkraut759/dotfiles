@@ -102,33 +102,31 @@ require('lazy').setup({
 			'saghen/blink.lib',
 			'rafamadriz/friendly-snippets',
 		},
+		build = function()
+			require('blink.cmp').build():wait(60000)
+		end,
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
 		opts = {
 			keymap = {
-				preset = 'default',
-				['<CR>']    = { 'accept', 'fallback' },
-				['<Tab>']   = { 'select_next', 'snippet_forward', 'fallback' },
-				['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-				['<C-d>']   = { 'scroll_documentation_down', 'fallback' },
-				['<C-u>']   = { 'scroll_documentation_up', 'fallback' },
-				['<C-e>']   = { 'cancel', 'fallback' },
+				preset		= 'default',
+				['<CR>']	= { 'accept', 'fallback' },
+				['<Tab>']	= { 'select_next', 'snippet_forward', 'fallback' },
+				['<S-Tab>']	= { 'select_prev', 'snippet_backward', 'fallback' },
+				['<C-d>']	= { 'scroll_documentation_down', 'fallback' },
+				['<C-u>']	= { 'scroll_documentation_up', 'fallback' },
+				['<C-e>']	= { 'cancel', 'fallback' },
 			},
-		},
-		appearance = {
-			nerd_font_variant = 'mono',
-		},
-		sources = {
-			default = { 'lsp', 'path', 'snippets', 'buffer' },
-		},
-		completion = {
-			list = { selection = { preselect = true, auto_show_delay_ms = 200 } },
-			menu = {
-				draw = {
-					columns = {
-						{ 'label', 'label_description', gap = 1 },
-						{ 'kind_icon', 'kind' },
-					},
-				},
+			appearance = {
+				nerd_font_variant = 'mono',
 			},
+			completion = {
+				documentation = { auto_show = true, auto_show_delay_ms = 200 },
+				list = { selection = { preselect = true, auto_insert = false } },
+			},
+			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+
+			fuzzy = { implementation = "rust" }
 		},
 	},
 	{
