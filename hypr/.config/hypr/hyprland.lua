@@ -12,6 +12,7 @@ require("misc")
 require("input")
 require("bindings")
 require("windows")
+require("workspaces")
 
 -----------------------
 ----- PERMISSIONS -----
