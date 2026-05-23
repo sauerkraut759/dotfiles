@@ -32,7 +32,7 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 for i = 1, 4 do
     hl.bind(mainMod .. " + " .. i, function()
     	local monitor = hl.get_active_monitor().id
-		hl.dispatch(hl.dsp.focus({ workspace = i+monitor }))
+		hl.dispatch(hl.dsp.focus({ workspace = i+ (monitor * 4) }))
     end)
     hl.bind(mainMod .. " + SHIFT + " .. i, function ()
 		local monitor = hl.get_active_monitor().id
