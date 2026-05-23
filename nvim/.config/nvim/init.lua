@@ -1,18 +1,17 @@
 -- BASIC CONFIG --
 
 local opt = vim.opt
-opt.number			= true
-opt.mouse			= 'a'
+opt.number		= true
+opt.mouse		= 'a'
 opt.numberwidth		= 1
 opt.clipboard		= 'unnamedplus'
-opt.syntax			= 'enable'
-opt.showcmd			= true
-opt.ruler			= true
+opt.showcmd		= true
+opt.ruler		= true
 opt.relativenumber	= true
 opt.encoding		= 'utf-8'
 opt.showmatch		= true
 opt.shiftwidth		= 8
-opt.tabstop			= 8
+opt.tabstop		= 8
 opt.expandtab		= false
 opt.wildmenu		= true
 opt.wildmode		= 'list:longest,list:full'
@@ -46,7 +45,6 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGIN SPEC
 
 require('lazy').setup({
-	
 	-- [THEMES]
 
 	--		treesitter
@@ -57,18 +55,17 @@ require('lazy').setup({
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup {
+			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "c", "cpp", "lua" },
 				highlight = {
 					enable = true,
-					aditional_vim_regex_highlighting = false,
+					additional_vim_regex_highlighting = false,
 				},
-
 				--indent = {enable = true},
-			}
+			})
 		end
 	},
-	{ 
+	{
 		"sauerkraut759/gruber-darker.nvim",
 		branch="add-transparent-background",
 		--dir = "/data/coding/nvim-plugins/gruber-darker.nvim",
@@ -96,17 +93,50 @@ require('lazy').setup({
 	},
 	-- [IDE]
 	{
+		"williamboman/mason.nvim",
+		opts = {},
+	},
+	{
+		'saghen/blink.cmp',
+		dependencies = {
+			'saghen/blink.lib',
+			'rafamadriz/friendly-snippets',
+		},
+		build = function()
+			require('blink.cmp').build():wait(60000)
+		end,
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = {
+				preset		= 'default',
+				['<CR>']	= { 'accept', 'fallback' },
+				['<Tab>']	= { 'select_next', 'snippet_forward', 'fallback' },
+				['<S-Tab>']	= { 'select_prev', 'snippet_backward', 'fallback' },
+				['<C-d>']	= { 'scroll_documentation_down', 'fallback' },
+				['<C-u>']	= { 'scroll_documentation_up', 'fallback' },
+				['<C-e>']	= { 'cancel', 'fallback' },
+			},
+			appearance = {
+				nerd_font_variant = 'mono',
+			},
+			completion = {
+				documentation = { auto_show = true, auto_show_delay_ms = 200 },
+				list = { selection = { preselect = true, auto_insert = false } },
+			},
+			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+
+			fuzzy = { implementation = "rust" }
+		},
+	},
+	{
 		"rmagatti/auto-session",
 		lazy = false,
 
-		---enables autocomplete for opts
-		---@module "auto-session"
-		---@type AutoSession.Config
-		opts = {
-		suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-		},
 		config = function()
-			require("auto-session").setup({})
+			require("auto-session").setup({
+				suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+			})
 		end
 	},
 	{ 'easymotion/vim-easymotion',	event = 'VeryLazy' },
@@ -118,7 +148,7 @@ require('lazy').setup({
 	},
 	{ 'christoomey/vim-tmux-navigator', lazy = false },
 	{ 'windwp/nvim-autopairs', event = 'InsertEnter', config = true},
-	{ 
+	{
 		'brenoprata10/nvim-highlight-colors',
 		config = function()
 			require('nvim-highlight-colors').setup({
@@ -129,9 +159,35 @@ require('lazy').setup({
 
 })
 
--- PLUGING SETTINGS
+-- LSP CONFIG
 
-vim.g.NERDTreeQuitOnOpen = 1
+vim.lsp.config('lua_ls', {
+	cmd = { 'lua-language-server' },
+	filetypes = { 'lua' },
+	root_markers = {
+		'.emmyrc.json',
+		'.luarc.json',
+		'.luarc.jsonc',
+	},
+	settings = {
+		Lua = {
+			codeLens = { enable = true },
+			hint = { enable = true, semicolon = 'Disable' },
+			diagnostics = {
+				globals = {'vim'},
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+vim.lsp.enable('lua_ls')
+-- PLUGING SETTINGS
 
 -- UTIL
 
@@ -144,7 +200,13 @@ local function toggle_terminal()
 end
 
 -- KEY MAPPINGS
-
 vim.keymap.set('n', '<Leader>s', '<Plug>(easymotion-s2)')
-vim.keymap.set('n', '<Leader>nt', ':CHADopen<CR>')
-vim.keymap.set('n', '<Leader>ts', toggle_terminal)
+vim.keymap.set('n', '<Leader>f', ':CHADopen<CR>')
+vim.keymap.set('n', '<Leader>t', toggle_terminal)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show documentation" })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename variable" })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count = -1}) end, { desc = "Go to prev diagnostic" })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count = 1}) end, { desc = "Go to next diagnostic" })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic float" })
