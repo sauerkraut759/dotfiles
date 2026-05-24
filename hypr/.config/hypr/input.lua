@@ -10,7 +10,7 @@ hl.config({
         kb_options = "lv3:ralt_alt",
         kb_rules   = "",
 
-        follow_mouse = 2,
+        follow_mouse = 1,
 
 	accel_profile = "flat",
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
