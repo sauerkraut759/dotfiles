@@ -4,7 +4,9 @@
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-local p = require("profiles")
+require("hyprland.lib")
+
+local p = get_profile()
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")

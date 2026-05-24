@@ -1,4 +1,4 @@
-require("programs")
+require("hyprland.programs")
 
 
 ---------------------

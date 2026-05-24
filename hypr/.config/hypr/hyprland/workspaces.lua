@@ -3,8 +3,9 @@
 --------------------
 
 -- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+require("hyprland.lib")
 
-local profile = require("profiles")
+local profile = get_profile()
 
 -- Persistent monitors
 

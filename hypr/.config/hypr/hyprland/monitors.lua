@@ -3,8 +3,9 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+require("hyprland.lib")
 
-local p = require("profiles")
+local p = get_profile()
 
 -- fallback
 hl.monitor({
