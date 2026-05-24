@@ -11,6 +11,5 @@ require("hyprland.layouts")
 require("hyprland.misc")
 require("hyprland.input")
 require("hyprland.bindings")
-require("hyprland.windows")
-require("hyprland.workspaces")
+require("hyprland.rules")
 
