@@ -16,4 +16,7 @@ hl.config({
 
 		layout = "dwindle",
 	},
+	xwayland = {
+		force_zero_scaling = true,
+	},
 })
