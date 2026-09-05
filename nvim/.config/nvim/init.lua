@@ -214,3 +214,4 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action
 vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count = -1}) end, { desc = "Go to prev diagnostic" })
 vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count = 1}) end, { desc = "Go to next diagnostic" })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+vim.keymap.set('n', '<Leader>h', ':nohl<CR>')
