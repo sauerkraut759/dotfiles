@@ -50,6 +50,14 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Seeing as other scripts will use it might as well export it
 export LINUXTOOLBOXDIR="$HOME/linuxtoolbox"
 
+# Enable ROCm on desktop
+if [[ "$HOSTNAME" != "nitro5" ]]; then
+    export HSA_OVERRIDE_GFX_VERSION=10.3.0
+    export ROCM_PATH=/opt/rocm
+    export PYTORCH_ROCM_ARCH="gfx1030"
+    export TORCH_BLAS_PREFER_HIPBLASLT=0
+fi
+
 # Allow ctrl-S for history navigation (with ctrl-R)
 [[ $- == *i* ]] && stty -ixon
 
@@ -224,6 +232,10 @@ alias docker-clean=' \
   docker image prune -f ; \
   docker network prune -f ; \
   docker volume prune -f '
+
+# python envs
+
+alias ai-env="source ~/coding/.venvs/ai-research/bin/activate"
 
 #######################################################
 # SPECIAL FUNCTIONS
