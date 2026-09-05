@@ -69,6 +69,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "kick-rules",
+	match = { title = ".*(Kick).*" },
+	opacity = "1.0 override",
+})
+
+
+hl.window_rule({
 	name = "zathura-rules",
 	match = { class = "org.pwmt.zathura" },
 	opacity = "1.0 override",
