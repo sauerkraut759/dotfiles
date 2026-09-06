@@ -159,6 +159,15 @@ require('lazy').setup({
 
 			})
 		end
+	},
+	{
+		'iamcco/markdown-preview.nvim',
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" }
 	}
 
 })
@@ -213,5 +222,6 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename variable"
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set('n', '[d', function() vim.diagnostic.jump({count = -1}) end, { desc = "Go to prev diagnostic" })
 vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count = 1}) end, { desc = "Go to next diagnostic" })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic float" })
 vim.keymap.set('n', '<Leader>h', ':nohl<CR>')
+vim.keymap.set('n', '<Leader>mp', '<Plug>MarkdownPreviewToggle<CR>')
