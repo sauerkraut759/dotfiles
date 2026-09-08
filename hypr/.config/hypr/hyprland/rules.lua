@@ -87,6 +87,27 @@ hl.window_rule({
 	float = true,
 })
 
+hl.window_rule({
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size  = { 1080, 920 },
+})
+
+---------------
+---- LAYER ----
+---------------
+
+hl.layer_rule({
+  name = "noctalia",
+  match = {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+  },
+  no_anim = true,
+  ignore_alpha = 0.5,
+  blur = true,
+  blur_popups = true,
+})
+
 --------------------
 ---- WORKSPACES ----
 --------------------
@@ -99,12 +120,18 @@ local profile = get_profile()
 -- Persistent monitors
 
 if profile.secondary_monitor then
-	for i = 5,8 do
+	for i = 6,10 do
 		hl.workspace_rule({ workspace = tostring(i), monitor = profile.secondary_monitor, persistent = true })
 	end
 end
 
-for i = 1,4 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = profile.main_monitor, persistent = true })
-end
+hl.workspace_rule({ workspace = "1", monitor = profile.main_monitor, persistent = true, default_name = "web" })
+hl.workspace_rule({ workspace = "2", monitor = profile.main_monitor, persistent = true, default_name = "code" })
+hl.workspace_rule({ workspace = "3", monitor = profile.main_monitor, persistent = true, default_name = "chat" })
+hl.workspace_rule({ workspace = "4", monitor = profile.main_monitor, persistent = true, default_name = "game" })
+hl.workspace_rule({ workspace = "5", monitor = profile.main_monitor, persistent = true, default_name = "design" })
+
+-- for i = 1,4 do
+-- 	hl.workspace_rule({ workspace = tostring(i), monitor = profile.main_monitor, persistent = true })
+-- end
 
