@@ -1,0 +1,170 @@
+config_version = 14
+
+[bar.default]
+center = [ "active_window" ]
+end = [
+    "media",
+    "spacer_2",
+    "tray",
+    "notifications",
+    "clipboard",
+    "spacer_3",
+    "clock",
+    "spacer_4",
+    "volume",
+    "input_volume",
+    "spacer_5",
+    "session"
+]
+margin_ends = 10
+start = [ "launcher", "workspaces" ]
+
+[control_center]
+hidden_tabs = [ "power", "network", "bluetooth" ]
+
+    [[control_center.shortcuts]]
+    type = "notification"
+
+    [[control_center.shortcuts]]
+    type = "keyboard_layout"
+
+    [[control_center.shortcuts]]
+    type = "audio"
+
+    [[control_center.shortcuts]]
+    type = "mic_mute"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+[location]
+address = "Viña del Mar"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-3"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 640.0
+    cy = 842.0
+    output = "HDMI-A-1"
+    placement_height = 1024.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell.launcher]
+pinned = [ "helium", "steam", "discord" ]
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Atuel"
+custom_palette = "Poimandres"
+mode = "dark"
+source = "custom"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "kitty" ]
+
+[wallpaper]
+directory = "/home/Terrapin/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/Terrapin/Pictures/Wallpapers/wallpaper.png"
+
+    [wallpaper.last]
+    path = "/home/Terrapin/Pictures/Wallpapers/wallpaper.png"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/Terrapin/Pictures/Wallpapers/wallpaper.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/Terrapin/Pictures/Wallpapers/wallpaper.png"
+
+[widget.active_window]
+anchor = true
+max_length = 240
+min_length = 0
+title_scroll = "on_hover"
+
+[widget.control-center]
+enabled = false
+
+[widget.media]
+max_length = 120
+scroll_repeat = "gesture"
+show_progress = true
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
+
+[widget.spacer_4]
+type = "spacer"
+
+[widget.spacer_5]
+type = "spacer"
+
+[widget.workspaces]
+capsule_border = "primary"
