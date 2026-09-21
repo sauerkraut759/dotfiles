@@ -3,21 +3,21 @@ config_version = 14
 [bar.default]
 center = [ "active_window" ]
 end = [
-    "media",
-    "spacer_2",
     "tray",
     "notifications",
     "clipboard",
     "spacer_3",
-    "clock",
-    "spacer_4",
     "volume",
     "input_volume",
+    "spacer_4",
+    "clock",
     "spacer_5",
     "session"
 ]
-margin_ends = 10
-start = [ "launcher", "workspaces" ]
+margin_ends = 0
+radius = 0
+shadow = false
+start = [ "workspaces" ]
 
 [control_center]
 hidden_tabs = [ "power", "network", "bluetooth" ]
@@ -110,6 +110,9 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@DP-3" ]
 [shell.launcher]
 pinned = [ "helium", "steam", "discord" ]
 
+[shell.panel]
+launcher_placement = "attached"
+
 [theme]
 builtin = "Tokyo-Night"
 community_palette = "Atuel"
@@ -138,14 +141,15 @@ directory = "/home/Terrapin/Pictures/Wallpapers"
 
 [widget.active_window]
 anchor = true
-max_length = 240
-min_length = 0
+max_length = 200
+min_length = 20
 title_scroll = "on_hover"
 
 [widget.control-center]
 enabled = false
 
 [widget.media]
+capsule_border = "secondary"
 max_length = 120
 scroll_repeat = "gesture"
 show_progress = true
@@ -153,9 +157,6 @@ title_scroll = "on_hover"
 
 [widget.network]
 show_label = false
-
-[widget.spacer_2]
-type = "spacer"
 
 [widget.spacer_3]
 type = "spacer"
@@ -168,3 +169,4 @@ type = "spacer"
 
 [widget.workspaces]
 capsule_border = "primary"
+show_labels = false
