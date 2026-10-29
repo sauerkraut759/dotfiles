@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [bar.default]
 center = [ "active_window" ]
@@ -108,7 +108,9 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@DP-3" ]
         show_weather = true
 
 [shell.launcher]
+layout = "simple"
 pinned = [ "helium", "steam", "discord" ]
+search_position = "top"
 
 [shell.panel]
 launcher_placement = "attached"
