@@ -63,17 +63,10 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "youtube-rules",
-	match = { title = ".*(YouTube).*" },
+	name = "media-rules",
+	match = { title = ".*(YouTube|Twitch|Kick).*" },
 	opacity = "1.0 override",
 })
-
-hl.window_rule({
-	name = "kick-rules",
-	match = { title = ".*(Kick).*" },
-	opacity = "1.0 override",
-})
-
 
 hl.window_rule({
 	name = "zathura-rules",
