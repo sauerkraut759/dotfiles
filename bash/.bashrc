@@ -112,7 +112,7 @@ alias ebrc='edit ~/.bashrc'
 # Alias's to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='trash -v'
+# alias rm='trash -v'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
@@ -214,6 +214,7 @@ alias clickpaste='sleep 3; xdotool type "$(xclip -o -selection clipboard)"'
 # KITTY - alias to be able to use kitty features when connecting to remote servers(e.g use tmux on remote server)
 
 alias kssh="kitty +kitten ssh"
+alias ssh="kssh"
 
 # alias to cleanup unused docker containers, images, networks, and volumes
 
