@@ -10,8 +10,8 @@ opt.ruler		= true
 opt.relativenumber	= true
 opt.encoding		= 'utf-8'
 opt.showmatch		= true
-opt.shiftwidth		= 8
-opt.tabstop		= 8
+opt.shiftwidth		= 4
+opt.tabstop		= 4
 opt.expandtab		= false
 opt.wildmenu		= true
 opt.wildmode		= 'list:longest,list:full'
@@ -174,7 +174,10 @@ require('lazy').setup({
 
 -- LSP CONFIG
 
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+
 vim.lsp.config('lua_ls', {
+	capabilities = capabilities,
 	cmd = { 'lua-language-server' },
 	filetypes = { 'lua' },
 	root_markers = {
@@ -200,6 +203,18 @@ vim.lsp.config('lua_ls', {
 	},
 })
 vim.lsp.enable('lua_ls')
+
+vim.lsp.config('emmet_language_server', {
+	capabilities = capabilities,
+	cmd = { 'emmet-language-server', '--stdio' },
+	filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+	init_options = {
+		showAbbreviationSuggestions = true,
+		showSuggestionsAsSnippets = true,
+	},
+})
+vim.lsp.enable('emmet_language_server')
+
 -- PLUGING SETTINGS
 
 -- UTIL
