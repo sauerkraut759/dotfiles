@@ -215,6 +215,8 @@ vim.lsp.config('emmet_language_server', {
 })
 vim.lsp.enable('emmet_language_server')
 
+require("vine")
+
 -- PLUGING SETTINGS
 
 -- UTIL
