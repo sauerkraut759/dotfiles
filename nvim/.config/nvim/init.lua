@@ -50,20 +50,20 @@ require('lazy').setup({
 	--		treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = 'master',
+		branch = 'main',
 		priority = 1001,
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "c", "cpp", "lua" },
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				--indent = {enable = true},
-			})
-		end
+			require("nvim-treesitter").install({
+			"lua", "vim", "vimdoc", "c", "python", "markdown", "markdown_inline"
+		})
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				pcall(vim.treesitter.start, ev.buf)
+			end,
+		})
+		end,
 	},
 	{
 		"sauerkraut759/gruber-darker.nvim",
@@ -103,7 +103,7 @@ require('lazy').setup({
 			'rafamadriz/friendly-snippets',
 		},
 		build = function()
-			require('blink.cmp').build():wait(60000)
+			require('blink.cmp').build():pwait()
 		end,
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -215,7 +215,7 @@ vim.lsp.config('emmet_language_server', {
 })
 vim.lsp.enable('emmet_language_server')
 
-require("vine")
+require("plugins.vine")
 
 -- PLUGING SETTINGS
 
