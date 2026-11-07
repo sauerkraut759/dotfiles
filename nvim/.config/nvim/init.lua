@@ -242,3 +242,5 @@ vim.keymap.set('n', ']d', function() vim.diagnostic.jump({count = 1}) end, { des
 vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic float" })
 vim.keymap.set('n', '<Leader>h', ':nohl<CR>')
 vim.keymap.set('n', '<Leader>mp', '<Plug>MarkdownPreviewToggle<CR>')
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {desc = 'Exit terminal mode'})
+
