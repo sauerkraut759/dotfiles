@@ -223,9 +223,9 @@ require("plugins.vine")
 
 
 local function toggle_terminal()
-	vim.cmd("botright vsplit")
+	vim.cmd("botright split")
 	vim.cmd("term")
-	vim.cmd("vertical resize 40")
+	vim.cmd("resize 20")
 	vim.cmd("startinsert")
 end
 
