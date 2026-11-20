@@ -1,23 +1,15 @@
-config_version = 16
+config_version = 20
 
 [bar.default]
-center = [ "active_window" ]
-end = [
-    "tray",
-    "notifications",
-    "clipboard",
-    "spacer_3",
-    "volume",
-    "input_volume",
-    "spacer_4",
-    "clock",
-    "spacer_5",
-    "session"
-]
+background_opacity = 0.0
+capsule = true
+capsule_border = "secondary_container"
+capsule_fill = "on_tertiary"
+capsule_radius = 8
+center = [ "workspaces" ]
 margin_ends = 0
 radius = 0
-shadow = false
-start = [ "workspaces" ]
+start = [ "launcher", "clock" ]
 
 [control_center]
 hidden_tabs = [ "power", "network", "bluetooth" ]
@@ -113,6 +105,7 @@ pinned = [ "helium", "steam", "discord" ]
 search_position = "top"
 
 [shell.panel]
+control_center_placement = "floating"
 launcher_placement = "attached"
 
 [theme]
@@ -128,6 +121,7 @@ wallpaper_scheme = "m3-content"
 
 [wallpaper]
 directory = "/home/Terrapin/Pictures/Wallpapers"
+fill_color = "on_primary"
 
     [wallpaper.default]
     path = "/home/Terrapin/Pictures/Wallpapers/wallpaper.png"
@@ -146,6 +140,9 @@ anchor = true
 max_length = 200
 min_length = 20
 title_scroll = "on_hover"
+
+[widget.clock]
+format = "{:%H:%M - %d/%m/%Y}"
 
 [widget.control-center]
 enabled = false
@@ -170,5 +167,10 @@ type = "spacer"
 type = "spacer"
 
 [widget.workspaces]
+active_pill_size = 2.0
 capsule_border = "primary"
+labels_only_when_occupied = true
+pill_scale = 0.5
+separator = "•"
+separator_color = "on_secondary_container"
 show_labels = false
